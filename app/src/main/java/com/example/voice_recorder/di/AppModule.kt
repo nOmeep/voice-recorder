@@ -4,6 +4,8 @@ import android.app.Application
 import androidx.room.Room
 import com.example.voice_recorder.common.Constants.DATABASE_NAME
 import com.example.voice_recorder.data.local.RecordsDatabase
+import com.example.voice_recorder.data.repository.RecordsRepositoryImplementation
+import com.example.voice_recorder.domain.repository.RecordsRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,4 +20,9 @@ object AppModule {
     fun provideRecordItemsDatabase(app: Application) =
         Room.databaseBuilder(app, RecordsDatabase::class.java, DATABASE_NAME)
             .build()
+
+    @Provides
+    @Singleton
+    fun provideRecordsRepository(db: RecordsDatabase): RecordsRepository =
+        RecordsRepositoryImplementation(db)
 }
