@@ -11,9 +11,9 @@ class DeleteAllSavedItemsUseCase @Inject constructor(
     operator fun invoke() = flow {
         try {
             repository.deleteAllSavedRecords()
-            emit(Resource.Success(Unit))
+            emit(Resource.Success<Unit>(Unit))
         } catch (e: Exception) {
-            emit(Resource.Error(e.message ?: "Can't delete all items"))
+            emit(Resource.Error<Unit>(e.message ?: "Can't delete all items"))
         }
     }
 }

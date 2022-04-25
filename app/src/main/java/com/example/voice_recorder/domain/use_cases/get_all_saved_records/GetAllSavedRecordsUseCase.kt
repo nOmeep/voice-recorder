@@ -13,11 +13,11 @@ class GetAllSavedRecordsUseCase @Inject constructor(
 ) {
     operator fun invoke(): Flow<Resource<List<RecordItem>>> = flow {
         try {
-            emit(Resource.Loading())
+            emit(Resource.Loading<List<RecordItem>>())
             val savedRecordsList = repository.getAllRecords().first()
-            emit(Resource.Success(savedRecordsList))
+            emit(Resource.Success<List<RecordItem>>(savedRecordsList))
         } catch (e: Exception) {
-            emit(Resource.Error(e.message ?: "Something goes wrong"))
+            emit(Resource.Error<List<RecordItem>>(e.message ?: "Something goes wrong"))
         }
     }
 }

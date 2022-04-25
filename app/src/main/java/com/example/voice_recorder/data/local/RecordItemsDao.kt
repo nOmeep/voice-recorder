@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface RecordItemsDao {
     @Query("select * from voice_records_table")
-    suspend fun getAllRecords(): Flow<List<RecordItem>>
+    fun getAllRecords(): Flow<List<RecordItem>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertRecordItem(item: RecordItem)

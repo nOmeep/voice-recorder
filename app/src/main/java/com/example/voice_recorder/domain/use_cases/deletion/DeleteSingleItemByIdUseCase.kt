@@ -11,9 +11,9 @@ class DeleteSingleItemByIdUseCase @Inject constructor(
     operator fun invoke(id: Int) = flow {
         try {
             repository.deleteSavedRecordById(id)
-            emit(Resource.Success(Unit))
+            emit(Resource.Success<Unit>(Unit))
         } catch (e: Exception) {
-            emit(Resource.Error(e.message ?: "Can't delete this item"))
+            emit(Resource.Error<Unit>(e.message ?: "Can't delete this item"))
         }
     }
 }

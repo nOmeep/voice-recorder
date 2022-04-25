@@ -9,6 +9,6 @@ data class RecordItem(
     val id: Int = 0,
     val name: String = "",
     val filePath: String = "",
-    val duration: Int = 0,
-    val createdAt: Int = 0
+    val duration: Long = 0,
+    val createdAt: Long = 0
 )

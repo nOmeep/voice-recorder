@@ -12,9 +12,9 @@ class InsertSingleItemUseCase @Inject constructor(
     operator fun invoke(item: RecordItem) = flow {
         try {
             repository.saveNewRecord(item)
-            emit(Resource.Success(Unit))
+            emit(Resource.Success<Unit>(Unit))
         } catch (e: Exception) {
-            emit(Resource.Error(e.message ?: "Can't save this record"))
+            emit(Resource.Error<Unit>(e.message ?: "Can't save this record"))
         }
     }
 }
