@@ -11,9 +11,14 @@ import com.example.voice_recorder.presentation.record_controller.RecordControlle
 import com.example.voice_recorder.presentation.records_screen.components.MainScreen
 import com.example.voice_recorder.presentation.ui.theme.Voice_RecorderTheme
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var recordController: RecordController
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -27,7 +32,7 @@ class MainActivity : ComponentActivity() {
                             777
                         )
                     },
-                    RecordController(this),
+                    recordController,
                     {
                         val locationPermission = ContextCompat.checkSelfPermission(
                             this,

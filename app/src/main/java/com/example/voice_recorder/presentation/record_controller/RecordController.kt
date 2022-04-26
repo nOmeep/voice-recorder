@@ -6,9 +6,13 @@ import android.os.Build
 import android.util.Log
 import com.example.voice_recorder.common.Constants.DEBUG_TAG
 import com.example.voice_recorder.domain.items.RecordInfo
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class RecordController(
-    private val context: Context
+@Singleton
+class RecordController @Inject constructor(
+    @ApplicationContext private val context: Context
 ) {
     private var mediaRecorder: MediaRecorder? = null
 
