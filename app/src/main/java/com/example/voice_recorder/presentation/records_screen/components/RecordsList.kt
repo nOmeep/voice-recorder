@@ -31,24 +31,39 @@ fun RecordsList(state: RecordsListState) {
                 )
             }
         }
-        if (state.error.isNotBlank()) {
-            Text(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(
-                        horizontal = 20.dp
-                    )
-                    .align(Alignment.Center),
-                text = state.error,
-                color = MaterialTheme.colors.error,
-                textAlign = TextAlign.Center,
-            )
-        }
-        if (state.isLoading) {
-            CircularProgressIndicator(
-                modifier = Modifier
-                    .align(Alignment.Center)
-            )
+        when {
+            state.error.isNotBlank() -> {
+                Text(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(
+                            horizontal = 20.dp
+                        )
+                        .align(Alignment.Center),
+                    text = state.error,
+                    color = MaterialTheme.colors.error,
+                    textAlign = TextAlign.Center,
+                )
+            }
+            state.isLoading -> {
+                CircularProgressIndicator(
+                    modifier = Modifier
+                        .align(Alignment.Center)
+                )
+            }
+            state.records.isEmpty() -> {
+                Text(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(
+                            horizontal = 20.dp
+                        )
+                        .align(Alignment.Center),
+                    text = "No records yet",
+                    color = MaterialTheme.colors.error,
+                    textAlign = TextAlign.Center,
+                )
+            }
         }
     }
 }

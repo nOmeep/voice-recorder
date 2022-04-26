@@ -1,7 +1,6 @@
 package com.example.voice_recorder.presentation.records_screen
 
 import android.util.Log
-import android.widget.Toast
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -14,7 +13,6 @@ import com.example.voice_recorder.domain.use_cases.deletion.DeleteSingleItemById
 import com.example.voice_recorder.domain.use_cases.get_all_saved_records.GetAllSavedRecordsUseCase
 import com.example.voice_recorder.domain.use_cases.insertion.InsertSingleItemUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.runBlocking
@@ -55,7 +53,7 @@ class RecordsScreenViewModel @Inject constructor(
         runBlocking {
             saveRecordUseCase(record).launchIn(viewModelScope)
         }
-        // мейби тут ошибка
+
         fetchAllSavedRecords()
     }
 }
